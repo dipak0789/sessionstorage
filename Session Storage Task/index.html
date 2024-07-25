@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Session Storage</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            color: #333;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        h2 {
+            margin-top: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        button {
+            padding: 10px 20px;
+            color: #fff;
+            background-color: #007bff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+        .form-section {
+            margin-bottom: 20px;
+        }
+    </style>
+    <script>
+        // Function to store data in session storage
+        function storeData() {
+            let key = document.getElementById('key').value;
+            let value = document.getElementById('value').value;
+            sessionStorage.setItem(key, value);
+            alert('Data stored successfully!');
+        }
+
+        // Function to retrieve data from session storage
+        function retrieveData() {
+            let key = document.getElementById('retrieveKey').value;
+            let value = sessionStorage.getItem(key);
+            if (value) {
+                alert('Retrieved Value: ' + value);
+            } else {
+                alert('No data found for the given key');
+            }
+        }
+
+        // Function to remove data from session storage
+        function removeData() {
+            let key = document.getElementById('removeKey').value;
+            sessionStorage.removeItem(key);
+            alert('Data removed successfully!');
+        }
+
+        // Function to clear all data from session storage
+        function clearData() {
+            sessionStorage.clear();
+            alert('All data cleared successfully!');
+        }
+    </script>
+</head>
+<body>
+    <h1>Session Storage</h1>
+    <div class="container">
+        <div class="form-section">
+            <h2>Store Data</h2>
+            <label for="key">Key:</label>
+            <input type="text" id="key">
+            <label for="value">Value:</label>
+            <input type="text" id="value">
+            <button onclick="storeData()">Store Data</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Retrieve Data</h2>
+            <label for="retrieveKey">Key:</label>
+            <input type="text" id="retrieveKey">
+            <button onclick="retrieveData()">Retrieve Data</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Remove Data</h2>
+            <label for="removeKey">Key:</label>
+            <input type="text" id="removeKey">
+            <button onclick="removeData()">Remove Data</button>
+        </div>
+
+        <div class="form-section">
+            <h2>Clear All Data</h2>
+            <button onclick="clearData()">Clear All Data</button>
+        </div>
+    </div>
+</body>
+</html>
